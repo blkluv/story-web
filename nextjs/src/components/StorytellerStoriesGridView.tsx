@@ -18,13 +18,6 @@ const FOUR_COLUMNS_LAYOUT = {
   },
 };
 
-interface StorytellerStoriesGridViewProps {
-  categories: string[];
-  title?: string | undefined;
-  moreButtonTitle?: string | undefined;
-  displayLimit?: number | undefined;
-}
-
 const StorytellerStoriesGridView = ({
   categories,
   title,
@@ -40,7 +33,6 @@ const StorytellerStoriesGridView = ({
     if (!isStorytellerInitialized) {
       return;
     }
-    // This method creates a new Storyteller grid, replacing the div with the id generated above
     storyGrid.current = new GridView(id, categories);
     storyGrid.current.displayLimit = displayLimit;
     storyGrid.current.theme = new UiTheme({
@@ -55,7 +47,7 @@ const StorytellerStoriesGridView = ({
             key1: 'value1',
             key2: 'value2',
             // Add other custom targeting options as needed
-          }
+          },
         };
       },
       onUserActivityOccurred: (type: ActivityType, data: UserActivityData) => {
