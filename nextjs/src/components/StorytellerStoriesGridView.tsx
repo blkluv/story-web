@@ -3,6 +3,7 @@ import {
   GridView,
   UiTheme,
   UserActivityData,
+  Story, // Ensure that Story is imported from the correct module
 } from '@getstoryteller/storyteller-sdk-javascript';
 import '@getstoryteller/storyteller-sdk-javascript/dist/storyteller.min.css';
 import { useEffect, useRef } from 'react';
@@ -17,6 +18,13 @@ const FOUR_COLUMNS_LAYOUT = {
     },
   },
 };
+
+interface StorytellerStoriesGridViewProps {
+  categories: string[];
+  title?: string | undefined;
+  moreButtonTitle?: string | undefined;
+  displayLimit?: number | undefined;
+}
 
 const StorytellerStoriesGridView = ({
   categories,
@@ -40,7 +48,7 @@ const StorytellerStoriesGridView = ({
       dark: FOUR_COLUMNS_LAYOUT,
     });
     storyGrid.current.delegate = {
-      getAdConfig: (stories: Story[]) => {
+      getAdConfig: (stories: Story[]) => { // Make sure Story is the correct type
         // Define custom targeting here
         const customTargeting = {
           key1: 'value1',
@@ -50,7 +58,7 @@ const StorytellerStoriesGridView = ({
 
         return {
           slot: '/33813572/qa-ads',
-          customTargeting, // Include custom targeting
+          customTargeting, // Include customTargeting
         };
       },
       onUserActivityOccurred: (type: ActivityType, data: UserActivityData) => {
@@ -82,3 +90,4 @@ const StorytellerStoriesGridView = ({
   );
 };
 
+export default StorytellerStoriesGridView;
