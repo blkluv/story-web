@@ -40,17 +40,17 @@ const StorytellerStoriesGridView = ({
       dark: FOUR_COLUMNS_LAYOUT,
     });
     storyGrid.current.delegate = {
-      getAdConfig: (stories: History[]) => {
-        // Add your custom targeting options as needed
+      getAdConfig: (stories: Story[]) => {
+        // Define custom targeting here
         const customTargeting = {
           key1: 'value1',
           key2: 'value2',
           // Add other custom targeting options as needed
         };
-      
+
         return {
           slot: '/33813572/qa-ads',
-          customTargeting,
+          customTargeting, // Include custom targeting
         };
       },
       onUserActivityOccurred: (type: ActivityType, data: UserActivityData) => {
@@ -82,4 +82,3 @@ const StorytellerStoriesGridView = ({
   );
 };
 
-export default StorytellerStoriesGridView;
